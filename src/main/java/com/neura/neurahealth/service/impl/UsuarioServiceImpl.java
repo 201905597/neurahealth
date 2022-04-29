@@ -145,7 +145,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioTable insertUsuario(UsuarioTable usuarioTable) {
         UsuarioTable userTable= new UsuarioTable();
         // Como es un POST, no pasamos el ID (es un Long @Id, se autoincrementa solo)
-        userTable.setUserData(userTable.getUserData());
+        userTable.setUserData(usuarioTable.getUserData());
         userTable.setUserName(usuarioTable.getUserName());
         userTable.setUserPwd(usuarioTable.getUserPwd());
         userTable.setIdPsic(usuarioTable.getIdPsic());
