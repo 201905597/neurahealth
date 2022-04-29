@@ -20,12 +20,11 @@
     {
 
         let numero= Math.floor(Math.random()* (1642 - 0) + 0); //elegimos una frase aleatoria de entre toda la lista
-        alert(numero)
         let frase=data[numero]["text"];
         let autor=data[numero]["author"];
         console.log(frase,autor);
         document.getElementById("frase").innerHTML = frase;
-
+        document.getElementById("autor").innerHTML = autor;
 
    	}
 
