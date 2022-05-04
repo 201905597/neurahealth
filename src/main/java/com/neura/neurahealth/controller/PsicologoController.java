@@ -1,13 +1,13 @@
 package com.neura.neurahealth.controller;
 
+import com.neura.neurahealth.model.PsicologoTable;
+import com.neura.neurahealth.model.UsuarioTable;
 import com.neura.neurahealth.service.PsicologoService;
 import com.neura.neurahealth.service.dto.PsicologoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +36,16 @@ public class PsicologoController {
                 psicologoEncontrado = psicologo;
         }
         return ResponseEntity.ok().body(psicologoEncontrado);
+    }
+
+    @PostMapping("/psicologos")
+    public ResponseEntity<PsicologoTable> insertarUsuario(@RequestBody PsicologoTable psicologo){
+        try{
+            PsicologoTable newPsic = psicologoService.insertPsicologo(psicologo);
+            return new ResponseEntity<>(newPsic, HttpStatus.CREATED);
+        }catch(Exception e){
+            System.out.println(e);
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

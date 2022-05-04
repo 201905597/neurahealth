@@ -13,6 +13,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("PSICOLOGOS")
 public class PsicologoTable {
     private @Column("ID") @Id Long id;
+    private @Column("PSIC_DATA") String psicData;
     private @Column("PSIC_NAME") String psicName;
     private @Column("PSIC_PWD") String psicPwd;
     private @Column("EMPLOYER_ID") Long employerId;

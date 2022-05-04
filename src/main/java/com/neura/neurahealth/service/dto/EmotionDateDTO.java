@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PsicologoDTO {
-    private Long id;
-    private String psicData;
-    private String psicName;
-    private String psicPwd;
-    private Long employerId;
+public class EmotionDateDTO {
+    private String emotionName;
+    private Date fecha;
+    private Long userId;
 }
-

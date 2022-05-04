@@ -25,5 +25,50 @@
             </ul>
         </div>
     </nav>
+
+    <div class="container-fluid bg-dark text-white">
+        <div class="row">
+            <div align="center" class="col p-3 text-white">
+                <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
+            </div>
+            <div class="col p-3 text-white">
+                <h1 align="center">Inicia sesión</h1>
+            </div>
+            <div align="center" class="col p-3 text-white">
+                <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <div align="center" class="row">
+            <div class="col-sm-3 p-3"></div>
+            <div class="col-sm-6 p-3">
+                <h4>Inicia sesión como usuario</h4><br>
+                <form>
+                    <label for="username">Nombre de usuario:</label><br>
+                    <div id="validu"></div>
+                    <input type="text" class="form-control mt-3" id="username" name="username"><br>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control mt-3" id="password" name="password"><br><br>
+                    <button class="button" onclick="verificarUser(document.getElementById('username').value, document.getElementById('password').value)">Enviar</button>
+                </form>
+                <br><br>
+                <h4>Inicia sesión como psicólogo</h4>
+                <form>
+                    <label for="psicname">Nombre de usuario:</label><br>
+                    <div id="validp"></div>
+                    <input type="text" class="form-control mt-3" id="psicname" name="psicname"><br>
+                    <label for="pass">Contraseña:</label><br>
+                    <input type="password" class="form-control mt-3" id="pass" name="pass"><br>
+                    <div id="error"></div>
+                    <br>
+                    <button class="button" onclick="verificarPsic(document.getElementById('psicname').value, document.getElementById('pass').value), document.getElementById('error')">Enviar</button>
+                </form>
+            </div>
+            <div class="col-sm-3 p-3"></div>
+        </div>
+    </div>
 </body>
 </html>

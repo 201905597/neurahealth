@@ -1,5 +1,7 @@
 package com.neura.neurahealth.service.impl;
 
+import com.neura.neurahealth.model.PsicologoTable;
+import com.neura.neurahealth.model.UsuarioTable;
 import com.neura.neurahealth.repository.PsicologoRepository;
 import com.neura.neurahealth.service.PsicologoService;
 import com.neura.neurahealth.service.dto.PsicologoDTO;
@@ -28,6 +30,7 @@ public class PsicologoServiceImpl implements PsicologoService {
         return StreamSupport.stream(psicologoRepository.findAll().spliterator(),false)
                 .map(obj -> new PsicologoDTO(
                         obj.getId(),
+                        obj.getPsicData(),
                         obj.getPsicName(),
                         obj.getPsicPwd(),
                         obj.getEmployerId()))
@@ -52,6 +55,7 @@ public class PsicologoServiceImpl implements PsicologoService {
                 (rs, rowNum) ->
                         new PsicologoDTO(
                                 rs.getLong("ID"),
+                                rs.getString("PSIC_DATA"),
                                 rs.getString("PSIC_NAME"),
                                 rs.getString("PSIC_PWD"),
                                 rs.getLong("EMPLOYER_ID"))
@@ -67,5 +71,22 @@ public class PsicologoServiceImpl implements PsicologoService {
     @Override
     public void deletePsicologo(Long id) {
         psicologoRepository.deleteById(id);
+    }
+
+    /**
+     * Añadir un nuevo psicólogo a la base de datos
+     * @param psicologo nuevo psicólogo que se quiere añadir
+     * @return psicólogo añadido
+     */
+    @Override
+    public PsicologoTable insertPsicologo(PsicologoTable psicologo) {
+        PsicologoTable psicologoTable = new PsicologoTable();
+        // Como es un POST, no pasamos el ID (es un Long @Id, se autoincrementa solo)
+        psicologoTable.setPsicData(psicologo.getPsicData());
+        psicologoTable.setPsicName(psicologo.getPsicName());
+        psicologoTable.setPsicPwd(psicologo.getPsicPwd());
+        psicologoTable.setEmployerId(psicologo.getEmployerId());
+        PsicologoTable newPsic = psicologoRepository.save(psicologoTable);
+        return newPsic;
     }
 }
