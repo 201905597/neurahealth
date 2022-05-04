@@ -24,7 +24,7 @@ async function verificarUser(username,password,error){
             }
         }
         if (valid){
-            location.replace("js/index.html");
+            location.replace("index.html");
         }else{
             error.innerHTML = '<p style="color:red;">Hay algún error en los datos introducidos.</p>';
         }
