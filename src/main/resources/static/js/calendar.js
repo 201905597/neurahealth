@@ -1,9 +1,19 @@
+//pruebas
+var userId = sessionStorage.getItem('userId');
+sessionStorage.setItem("userId",userId);
+let div = document.getElementById("hola");
+//...
+
 //GET REQUEST - ESTADOS DE ÁNIMO GUARDADOS
 async function getAnimos(mmyyyyp){
     event.preventDefault();
+    //pruebas
+    div.innerHTML = userId;
+    //...
+    console.log(userId);
     console.log(mmyyyyp.options[mmyyyyp.selectedIndex].text);
     let mmyyyy = mmyyyyp.options[mmyyyyp.selectedIndex].text;
-    let api = "/api/v1/emotiondates/10001/" + mmyyyy.toString();
+    let api = "/api/v1/emotiondates/10001/" + userId.toString() + "/" + mmyyyy.toString();
 
     let res = await fetch(api,{
         method: 'GET',

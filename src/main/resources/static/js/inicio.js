@@ -19,6 +19,8 @@ async function verificarUser(username,password,error){
             let userName = user["userName"];
             let pass = user["password"];
             userId = user["id"];
+            //SET del parámetro user ID
+            sessionStorage.setItem("userId",userId);
 
             if (userName == username || pass == password){
                 valid = true;
@@ -26,10 +28,11 @@ async function verificarUser(username,password,error){
             }
         }
         if (valid){
+            //sessionStorage.setItem("userId",userId);
             location.replace("userIndex.html");
             console.log("hola");
-            let userId2 = document.getElementById("userId");
-            userId2.innerHTML = userId;
+            //let userId2 = document.getElementById("userId");
+            //userId2.innerHTML = userId;
         }else{
             error.innerHTML = '<p style="color:red;">Hay algún error en los datos introducidos.</p>';
         }
