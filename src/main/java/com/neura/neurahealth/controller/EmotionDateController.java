@@ -37,9 +37,10 @@ public class EmotionDateController {
         return ResponseEntity.ok().body(userEmotions);
     }
 
-    @GetMapping("/emotiondates/{id}/{mmyyyy}")
-    public ResponseEntity<List<EmotionDateDTO>> getEmotionsById(@PathVariable("id") long id, @PathVariable("mmyyyy") String mmyyyy){
+    @GetMapping("/emotiondates/{id}/{mm}/{yyyy}")
+    public ResponseEntity<List<EmotionDateDTO>> getEmotionsById(@PathVariable("id") long id, @PathVariable("mm") String mm,@PathVariable("yyyy") String yyyy){
         List<EmotionDateDTO> userEmotions = new ArrayList<>();
+        String mmyyyy = mm + yyyy;
         userEmotions = emotionDateService.getEmotionsByUserDate(id,mmyyyy);
         return ResponseEntity.ok().body(userEmotions);
     }
