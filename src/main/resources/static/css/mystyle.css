@@ -16,3 +16,14 @@
                 background-color: white;
                 color: #B87ABA;
             }
+
+.custom-select {
+
+}
+
+.custom-select select {
+    background-color: #D3C2D1;
+    color: white;
+    padding: 5px;
+    outline: none;
+}

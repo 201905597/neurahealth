@@ -30,7 +30,7 @@ async function verificarUser(username,password,error){
         if (valid){
             //sessionStorage.setItem("userId",userId);
             location.replace("userIndex.html");
-            console.log("hola");
+            //console.log("hola");
             //let userId2 = document.getElementById("userId");
             //userId2.innerHTML = userId;
         }else{

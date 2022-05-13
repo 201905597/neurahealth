@@ -1,0 +1,116 @@
+.bfeliz {
+    background-color: #EF9F53; /* NARANJA */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.bfeliz:hover {
+    background-color: white;
+    color: #EF9F53;
+}
+
+.bcansado {
+    background-color: #A065E3; /* MORADO */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.bcansado:hover {
+    background-color: white;
+    color: #A065E3;
+}
+
+.btriste {
+    background-color: #4898C3; /* AZUL */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.btriste:hover {
+    background-color: white;
+    color: #4898C3;
+}
+
+
+.bproductivo {
+    background-color: #54B86E; /* VERDE */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.bproductivo:hover {
+    background-color: white;
+    color: #54B86E;
+}
+
+
+.bestresado {
+    background-color: #CD3A3A; /* ROJO */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.bestresado:hover {
+    background-color: white;
+    color: #CD3A3A;
+}
+
+
+.benfadado {
+    background-color: #524747; /* GRIS-MARRÓN */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.benfadado:hover {
+    background-color: white;
+    color: #524747;
+}

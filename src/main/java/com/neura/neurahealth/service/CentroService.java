@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CentroService {
 
-    //All data from Centros Table
+    //All data from Centros Table -
     List<CentroDTO> getCentros();
 }

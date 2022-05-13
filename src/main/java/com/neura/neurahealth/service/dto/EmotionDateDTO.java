@@ -10,6 +10,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmotionDateDTO {
+    private Long id;
     private String emotionName;
     private Date fecha;
     private Long userId;

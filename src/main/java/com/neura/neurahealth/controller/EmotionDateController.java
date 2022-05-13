@@ -1,14 +1,15 @@
 package com.neura.neurahealth.controller;
 
+import com.neura.neurahealth.model.EmotionDateTable;
+import com.neura.neurahealth.model.UsuarioTable;
 import com.neura.neurahealth.service.EmotionDateService;
 import com.neura.neurahealth.service.dto.EmotionDateDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class EmotionDateController {
     /**
      * GET REQUEST - EMOCIONES GUARDADAS POR FECHA
      * @param id ID del usuario del que queremos ver las emociones guardadas
-     * @return emocioens del usuario guardadas por fecha
+     * @return emociones del usuario guardadas por fecha
      */
     @GetMapping("/emotiondates/{id}")
     public ResponseEntity<List<EmotionDateDTO>> getEmotionsById(@PathVariable("id") long id){
@@ -37,11 +38,49 @@ public class EmotionDateController {
         return ResponseEntity.ok().body(userEmotions);
     }
 
+    /**
+     * GET REQUEST - EMOCIONES DE UN MES Y AÑO ESPECÍFICOS
+     * @param id ID del usuario del que queremos ver las emociones guardadas
+     * @param mm mes
+     * @param yyyy año
+     * @return emociones del usuario de ese mes específico
+     */
     @GetMapping("/emotiondates/{id}/{mm}/{yyyy}")
     public ResponseEntity<List<EmotionDateDTO>> getEmotionsById(@PathVariable("id") long id, @PathVariable("mm") String mm,@PathVariable("yyyy") String yyyy){
         List<EmotionDateDTO> userEmotions = new ArrayList<>();
         String mmyyyy = mm + yyyy;
         userEmotions = emotionDateService.getEmotionsByUserDate(id,mmyyyy);
         return ResponseEntity.ok().body(userEmotions);
+    }
+
+    @GetMapping("/emotiondates/{id}/{fecha}")
+    public ResponseEntity<Boolean> getEmotionByIdFecha(@PathVariable("id") long id, @PathVariable("fecha") Date fecha){
+        /*EmotionDateDTO userEmotion = new EmotionDateDTO();
+        userEmotion = emotionDateService.getEmotionByIdFecha(id,fecha);
+        return ResponseEntity.ok().body(userEmotion);*/
+        Boolean existe = false;
+        String fechastring = fecha.toString();
+        String mm = fechastring.substring(5,7);
+        String yyyy = fechastring.substring(0,4);
+        List<EmotionDateDTO> userEmotions = new ArrayList<>();
+        String mmyyyy = mm + yyyy;
+        userEmotions = emotionDateService.getEmotionsByUserDate(id,mmyyyy);
+        for (EmotionDateDTO emotion : userEmotions){
+            if (emotion.getFecha().equals(fecha)){
+                existe = true;
+            }
+        }
+        return ResponseEntity.ok().body(existe);
+    }
+
+    @PostMapping("/emotiondates")
+    public ResponseEntity<EmotionDateTable> insertarEmocion(@RequestBody EmotionDateTable emotionDateTable){
+        try{
+            EmotionDateTable newEmotion = emotionDateService.insertEmotion(emotionDateTable);
+            return new ResponseEntity<>(newEmotion, HttpStatus.CREATED);
+        }catch(Exception e){
+            System.out.println(e);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
