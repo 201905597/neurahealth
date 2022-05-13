@@ -24,7 +24,7 @@ public class LibroController {
      * @return todos los libros
      */
     @GetMapping("/libros")
-    public ResponseEntity<List<CentroDTO>> getAllLibros(){
+    public ResponseEntity<List<LibroDTO>> getAllLibros(){
         List<LibroDTO> libros = new ArrayList<LibroDTO>();
         libros = libroService.getLibros();
         return ResponseEntity.ok().body(libros);

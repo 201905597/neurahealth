@@ -6,10 +6,12 @@ import com.neura.neurahealth.service.CentroService;
 import com.neura.neurahealth.service.LibroService;
 import com.neura.neurahealth.service.dto.LibroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
 
+@Service
 public class LibroServiceImpl  implements LibroService {
 
     @Autowired
