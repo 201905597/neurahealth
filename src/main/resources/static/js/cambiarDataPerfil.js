@@ -6,21 +6,20 @@ let cambiado="nada";
 function showInfo()
 {
 
-
     if(document.getElementById("seleccion").value=="Nombre de usuario")
     {
         divObjetivo = document.getElementById("cambiarUN");
-        cambiado="cambiado_NU"
+        cambiado="cambiado_NU";
     }
     else if(document.getElementById("seleccion").value=="Contraseña")
     {
         divObjetivo = document.getElementById("cambiarPASS");
-        cambiado="cambiado_PSW"
+        cambiado="cambiado_PSW";
     }
     else if(document.getElementById("seleccion").value=="Psicologo")
     {
         divObjetivo = document.getElementById("cambiarPSICO");
-        cambiado="cambiado_PSI"
+        cambiado="cambiado_PSI";
     }
 
 
@@ -42,10 +41,14 @@ function showInfo()
 
 async function updateUsuario(){
 
+    var userId = sessionStorage.getItem('userId');
+    sessionStorage.setItem("userId",userId);
+
+
     if(cambiado=="cambiado_NU")
     {
         userNameNuevo = document.getElementById("userNameChange").value;
-         userNameNuevo = userName.toString();
+        userNameNuevo = userName.toString();
     }
 
      if(cambiado="cambiado_PSW")
@@ -59,15 +62,6 @@ async function updateUsuario(){
         psicNuevo = psicNuevo.toString();
     }
 
-    let userInfo = await getUserById(userId);
-
-    console.log("userInfo content");
-    console.log(userInfo);
-
-    if (userInfo != null){
-        //let user = userInfo[0];
-        //console.log(user);
-        let userData = userInfo["userData"];
 
         const dataObj = {
                     "id" : userId,
@@ -77,7 +71,9 @@ async function updateUsuario(){
                     "idPsic" : psicNuevo
                 };
 
-            let res = await fetch("/api/v1/usuarios/10005",{
+             let api = "/api/v1/usuarios/" + userId.toString();
+
+                let res = await fetch(api,{
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,8 +83,5 @@ async function updateUsuario(){
 
             console.log(res);
             showUsers();
-    }else{
-        alert("¡Vaya! No se ha podido resolver tu petición");
-    }
 
-}
+    }
