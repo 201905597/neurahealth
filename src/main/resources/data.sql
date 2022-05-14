@@ -24,10 +24,13 @@ INSERT INTO EMOTIONDATES(ID,EMOTION_NAME,FECHA,USER_ID) VALUES (40002,'feliz',TO
 INSERT INTO EMOTIONDATES(ID,EMOTION_NAME,FECHA,USER_ID) VALUES (40003,'feliz',TO_DATE('2022-05-02', 'yyyy-mm-dd'),10001);
 INSERT INTO EMOTIONDATES(ID,EMOTION_NAME,FECHA,USER_ID) VALUES (40004,'feliz',TO_DATE('2022-05-03', 'yyyy-mm-dd'),10001);
 
-INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El poder de confiar en ti','Curro Cañete',TO_DATE('2019-03-19', 'yyyy-mm-dd'),'triste');
-INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('Ser feliz y vencer las preocupaciones','Albert Ellis',TO_DATE('2018-05-29', 'yyyy-mm-dd'),'triste');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El poder de confiar en ti','Curro Cañete',TO_DATE('2019-03-19', 'yyyy-mm-dd'),'feliz');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('Ser feliz y vencer las preocupaciones','Albert Ellis',TO_DATE('2018-05-29', 'yyyy-mm-dd'),'feliz');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('La auténtica felicidad','Martin Seligman',TO_DATE('2002-08-27', 'yyyy-mm-dd'),'feliz');
 INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El mal dormir','David Jiménez Torres',TO_DATE('2022-01-24', 'yyyy-mm-dd'),'cansado');
 INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('La cura para la fatiga','Dr. Sohere Roked',TO_DATE('2015-04-14', 'yyyy-mm-dd'),'cansado');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('La magia del descanso','Mariluz de la Parra Cervantes',TO_DATE('2020-10-18', 'yyyy-mm-dd'),'cansado');
 INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El Pequeño Libro del Mindfulness','Patricia Collard',TO_DATE('2016-02-23', 'yyyy-mm-dd'),'estresado');
 INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El poder del ahora','Eckhart Tolle',TO_DATE('2013-01-01', 'yyyy-mm-dd'),'estresado');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El juego interior del estrés','Timothy Gallwey',TO_DATE('2013-01-04', 'yyyy-mm-dd'),'estresado');
 
