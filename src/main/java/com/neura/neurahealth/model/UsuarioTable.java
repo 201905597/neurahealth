@@ -16,5 +16,6 @@ public class UsuarioTable {
     private @Column("USER_DATA") String userData;
     private @Column("USER_NAME") String userName;
     private @Column("USER_PWD") String userPwd;
+    private @Column("USER_EMAIL") String userEmail;
     private @Column("ID_PSIC") Long idPsic;
 }

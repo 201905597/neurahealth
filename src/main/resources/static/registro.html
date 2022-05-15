@@ -54,9 +54,11 @@
                     <label for="username">Nombre de usuario:</label><br>
                     <div id="validu"></div>
                     <input type="text" class="form-control mt-3" id="username" name="username"><br>
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control mt-3" id="email" name="email"><br><br>
                     <label for="password">Contraseña:</label>
                     <input type="password" class="form-control mt-3" id="password" name="password"><br><br>
-                    <button class="button" onclick="registrarse(document.getElementById('datos').value, document.getElementById('username').value, document.getElementById('password').value, document.getElementById('validu'))">Enviar</button>
+                    <button class="button" onclick="registrarse(document.getElementById('datos').value, document.getElementById('username').value,document.getElementById('email').value, document.getElementById('password').value, document.getElementById('validu'))">Enviar</button>
                 </form>
                 <br><br>
                 <h4>¿Quieres trabajar con nosotros?</h4>

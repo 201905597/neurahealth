@@ -40,6 +40,7 @@ public class UsuarioControllerE2ETest {
                         obj.getUserData(),
                         obj.getUserName(),
                         obj.getUserPwd(),
+                        obj.getUserEmail(),
                         obj.getIdPsic()
                 )).toList();
 

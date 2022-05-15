@@ -32,6 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                         obj.getUserData(),
                         obj.getUserName(),
                         obj.getUserPwd(),
+                        obj.getUserEmail(),
                         obj.getIdPsic()))
                 .toList();
     }
@@ -44,7 +45,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<UsuarioDTO> getUsuariosConPsicologo() {
         String query=
                 """
-                SELECT U.ID, U.USER_DATA, U.USER_NAME, U.USER_PWD, U.ID_PSIC
+                SELECT U.ID, U.USER_DATA, U.USER_NAME, U.USER_PWD, U.USER_EMAIL, U.ID_PSIC
                 FROM USUARIOS U, PSICOLOGOS P
                 WHERE U.ID_PSIC=P.ID;
                 """;
@@ -57,6 +58,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                                 rs.getString("USER_DATA"),
                                 rs.getString("USER_NAME"),
                                 rs.getString("USER_PWD"),
+                                rs.getString("USER_EMAIL"),
                                 rs.getLong("ID_PSIC"))
         );
 
@@ -69,7 +71,7 @@ public class UsuarioServiceImpl implements UsuarioService {
      */
     @Override
     public List<UsuarioDTO> getUsuariosConPsicologoById(Long idPsic) {
-        String query= "SELECT ID, USER_NAME, USER_PWD, ID_PSIC FROM USUARIOS WHERE ID_PSIC=" + idPsic + ";";
+        String query= "SELECT ID, USER_DATA, USER_NAME, USER_PWD, USER_EMAIL, ID_PSIC FROM USUARIOS WHERE ID_PSIC=" + idPsic + ";";
 
         List<UsuarioDTO> usuariosList = jdbcTemplate.query(
                 query,
@@ -79,6 +81,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                                 rs.getString("USER_DATA"),
                                 rs.getString("USER_NAME"),
                                 rs.getString("USER_PWD"),
+                                rs.getString("USER_EMAIL"),
                                 rs.getLong("ID_PSIC"))
         );
 
@@ -93,7 +96,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<UsuarioDTO> getUsuariosSinPsicologo() {
         String query=
                 """
-                SELECT ID, USER_NAME, USER_PWD, ID_PSIC
+                SELECT ID, USER_NAME, USER_PWD, USER_EMAIL, ID_PSIC
                 FROM USUARIOS
                 WHERE ID_PSIC=0;
                 """;
@@ -106,6 +109,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                                 rs.getString("USER_DATA"),
                                 rs.getString("USER_NAME"),
                                 rs.getString("USER_PWD"),
+                                rs.getString("USER_EMAIL"),
                                 rs.getLong("ID_PSIC"))
         );
 
@@ -148,6 +152,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         userTable.setUserData(usuarioTable.getUserData());
         userTable.setUserName(usuarioTable.getUserName());
         userTable.setUserPwd(usuarioTable.getUserPwd());
+        userTable.setUserEmail(usuarioTable.getUserEmail());
         userTable.setIdPsic(usuarioTable.getIdPsic());
         UsuarioTable newUser = usuarioRepository.save(userTable);
         return newUser;

@@ -29,7 +29,7 @@ async function getPacientes(divpacientes){
                        +'<input type="text" name="name"><br><br>'
                        +'Tu E-mail:<br>'
                        +'<input type="text" name="mail"><br><br>'
-                       +'Eacribe aquí tu comentario:<br>'
+                       +'Escribe aquí tu comentario:<br>'
                        +'<input type="text" name="comment" size="50"><br><br>'
                        +'<input class="button" type="submit" value="Send">'
                        +'<input class="button" type="reset" value="Reset">'
@@ -39,6 +39,7 @@ async function getPacientes(divpacientes){
                 let usuario = data[i];
                 let userData = usuario["userData"];
                 let userName = usuario["userName"];
+                let userEmail = usuario["userEmail"];
                 let userId = usuario["id"];
                 content = content + '<div class="card">'
                                          + '<div class="card-body">'
@@ -55,8 +56,14 @@ async function getPacientes(divpacientes){
                                          + '</div>'
                                       + '</div>'
                                       + '<div align="center" style="display: none; padding-left: 10%; padding-right: 10%;" id="' + userId.toString() + "show" + '">'
-                                      + '<table class="table table-dark table-hover" id="' + userId.toString() + "table" + '"></table>'
-                                      + '</div>';
+                                        + '<table class="table table-dark table-hover" id="' + userId.toString() + "table" + '"></table>'
+                                      + '</div>'
+                                      +'<div align="center" style="display: none; padding-left: 10%; padding-right: 10%;" id="' + userId.toString() + "email" + '">'
+                                          +'<p>Puedes enviar un mail a tu paciente para programar una sesión.</p>'
+                                          +'<form action="mailto:' + userEmail.toString() + '" method="post" enctype="text/plain">'
+                                          +'<input class="button" type="submit" value="Send">'
+                                          +'</form>'
+                                      +'</div>';
             }
         }
         divpacientes.innerHTML = content;
@@ -73,12 +80,20 @@ async function mostrarSeguimiento(boton){
     let userId = boton.id;
     boton.innerHTML = "Ver Seguimiento";
     userId = userId.toString();
+
+    //DIV en el que está la tabla
     let divShow = document.getElementById(userId + "show");
+
+    //DIV para enviar mail
+    let divMail = document.getElementById(userId + "email");
+
     if (divShow.style.display == "block"){
         divShow.style.display = "none";
+        divMail.style.display = "none";
     }else{
         boton.innerHTML = "Ocultar";
         divShow.style.display = "block";
+        divMail.style.display = "block";
     }
 
     //Fetch de las emociones guardadas del usuario

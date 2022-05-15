@@ -1,10 +1,12 @@
 //POST REQUEST - INSERCION DE USUARIOS
-async function registrarse(datos,username,password,validu){
+async function registrarse(datos,username,email,password,validu){
     event.preventDefault();
-    if (datos == "" || username == "" || password == ""){
+    if (datos == "" || username == "" || password == "" || email == ""){
         alert("Por favor, completa todos los campos");
     }else if (password.length < 8){
         alert("La contraseña introducida es demasiado corta");
+    }else if(!validarEmail(email)){
+        alert("El email introducido no es válido");
     }else{
 
         // Comprobación de validez del nombre de usuario
@@ -16,6 +18,7 @@ async function registrarse(datos,username,password,validu){
                 "userData" : datos,
                  "userName" : username,
                  "userPwd" : password,
+                 "userEmail" : email,
                  "idPsic" : 0
             };
 
@@ -70,6 +73,13 @@ async function validUsername(usernamev){
             alert("¡Vaya! No se ha podido resolver tu petición");
             return false;
         }
+}
+
+//FUNCION PARA VALIDAR EL EMAIL
+function validarEmail(email){
+    //REGEXP EMAIL
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
 }
 
 // POST REQUEST - INSERCION DE PSICOLOGOS

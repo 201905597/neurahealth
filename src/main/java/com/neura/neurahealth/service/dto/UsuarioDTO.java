@@ -12,5 +12,6 @@ public class UsuarioDTO {
     private String userData;
     private String userName;
     private String userPwd;
+    private String userEmail;
     private Long idPsic;
 }
