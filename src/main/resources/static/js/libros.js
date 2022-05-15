@@ -1,6 +1,9 @@
 
     async function recomendarLibros()
     {
+
+
+          let emociones = ["emocion"];
           event.preventDefault();
            var userId = sessionStorage.getItem('userId');
            sessionStorage.setItem("userId",userId);
@@ -18,13 +21,17 @@
                    console.log(data);
                     for (let i = 0; i<data.length; i++){
                        let datos_emociones = data[i];
-                       let emocion = datos_emociones["emotionName"];
+                       emociones[i] = datos_emociones["emotionName"];
 
                     }
+                    numero= Math.floor(Math.random()*(emociones.length-1-0+1)+0); //elegimos una emocion aleatoria del usuario
+                    emocion=emociones[numero];
+
 
 
 
            }
+
 
             let api2 = "/api/v1/libros";
 
@@ -38,7 +45,7 @@
 
                   const data2 = await res2.json();
                   console.log(data2);
-                  let emocion="cansado"; //BORRAR ESTO
+
 
                   let m=0;
 
