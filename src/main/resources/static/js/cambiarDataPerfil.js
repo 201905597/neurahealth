@@ -104,11 +104,15 @@ async function updateUsuario(){
                             "idPsic" : psicNuevo
                         };
 
-                    //AQUI FALTARIA UN CONTROL DE ERRORES: ver qué status tiene res para saber si ha ido bien o mal
-                    //Si ha ido bien podría salir una alert de "Cambio realizado correctamente" y si no de "No se ha podido resolver la petición"
-                    //También faltarían dos comprobaciones:
-                    //(1) Comprobar que el nuevo nombre de usuario no está cogido (esto está hecho en registro.js por si te quieres basar en eso)
+
+
+                    //comprobaciones:
+                     if (passwNuevo.length < 8){
+                            alert("La contraseña introducida es demasiado corta");
+                     }
                     //(2) Comprobar que la nueva contraseña es de mínimo 8 caracteres
+                     let uservalido = await validUsername(userNameNuevo);
+
                      let api = "/api/v1/usuarios/" + userId.toString();
 
                         let res = await fetch(api,{
@@ -120,9 +124,14 @@ async function updateUsuario(){
                     });
 
                     console.log(res);
-                    //showUsers(); //esta funcion no esta definida en este javascript asi que da error
-                    //te puedes definir una que haga un GET de todos los usuarios al final y los imprima en console.log para ver si se ha cambiado bien
-                    //pero esto es solo para verlo nosotras, lo importante es comprobar el status de res
+                    if (res.status == 200 && uservalido==true){
+                        alert("Cambios guardados correctamente");
+                    }
+                    else if (res.status != 200)
+                    {
+                        alert("¡Vaya! No se ha podido resolver tu petición.");
+                    }
+
 
         } //por si el usuario no cambia nada, se guarda como ya estaba
         else{
@@ -130,5 +139,34 @@ async function updateUsuario(){
         }
 
 
+}
+async function validUsername(usernamev){
 
+        let res = await fetch("/api/v1/usuarios",{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+        }});
+
+        let valid = true;
+        if (res.status == 200){
+            const data = await res.json();
+
+            for (let i = 0; i<data.length; i++){
+                let user = data[i];
+                let userName = user["userName"];
+                if (userName == usernamev){
+                    valid = false;
+                    alert("Ese nombre de usuario ya existe. Por favor, escoja otro");
+                }
+            }
+
+
+            return valid;
+
+        }else{
+            alert("¡Vaya! No se ha podido resolver tu petición");
+            return false;
+        }
 }

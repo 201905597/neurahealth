@@ -16,3 +16,5 @@ public class CentroTable {
     private @Column("EMPLOYER_NAME") String employerName;
     private @Column("POSTAL_CODE") Long postalCode;
 }
+
+
