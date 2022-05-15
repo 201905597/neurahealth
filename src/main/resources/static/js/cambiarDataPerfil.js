@@ -41,8 +41,32 @@ function showInfo()
 
 async function updateUsuario(){
 
+
+
     var userId = sessionStorage.getItem('userId');
     sessionStorage.setItem("userId",userId);
+
+    let api2 = "/api/v1/usuarios/" + userId.toString();
+
+        let res2 = await fetch(api2,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+         }});
+        if (res2.status == 200){
+
+               const data2 = await res2.json();
+                for (let j = 0; j<data2.length; j++){
+                     let usuario = data2[j];
+                     let userData = usuario["userData"];
+                     let userName = usuario["userName"];
+                     let userPwd = usuario["userPwd"];
+                     let psicNuevo = usuario["idPsic"];
+                     console.log(usuario);
+             }
+        } //por si el usuario no cambia nada, se guarda como ya estaba
+
 
 
     if(cambiado=="cambiado_NU")
@@ -51,16 +75,18 @@ async function updateUsuario(){
         userNameNuevo = userName.toString();
     }
 
-     if(cambiado="cambiado_PSW")
+     else if(cambiado="cambiado_PSW")
      {
         passwNuevo = document.getElementById("userPasswChange").value;
         passwNuevo = passwNuevo.toString();
+
     }
-    if(cambiado="cambiado_PSI")
+    else if(cambiado="cambiado_PSI")
     {
         psicNuevo = document.getElementById("psicIdChange").value;
         psicNuevo = psicNuevo.toString();
     }
+
 
 
         const dataObj = {

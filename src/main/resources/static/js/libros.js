@@ -23,6 +23,7 @@
                     }
 
 
+
            }
 
             let api2 = "/api/v1/libros";
@@ -37,7 +38,10 @@
 
                   const data2 = await res2.json();
                   console.log(data2);
-                  let emocion="estresado"; //BORRAR ESTO
+                  let emocion="cansado"; //BORRAR ESTO
+
+                  let m=0;
+
                 for (let j = 0; j<data2.length; j++){
                   let libro = data2[j];
                   let titulo_libro = libro["titulo"];
@@ -45,76 +49,54 @@
                   let fecha_libro = libro["fecha_pub"];
                   let emocion_libro = libro["emocion"];
 
+                  /*
 
-                  if(emocion=="triste" && emocion_libro=="triste")
+                  if(emocion=="triste")
+                  {
+                    document.getElementById("titulo_emocion").innerHTML = "Libros para combatir la tristeza";
+                  }
+                  else if(emocion=="cansado")
                   {
 
-                        if(j==0)
-                        {
-                            document.getElementById("libro1_titulo").innerHTML = titulo_libro;
-                            document.getElementById("libro1_autor").innerHTML = autor_libro;
-                            document.getElementById("libro1_fecha").innerHTML = fecha_libro;
-                        }
-                         if(j==1)
-                        {
-                            document.getElementById("libro2_titulo").innerHTML = titulo_libro;
-                            document.getElementById("libro2_autor").innerHTML = autor_libro;
-                            document.getElementById("libro2_fecha").innerHTML = fecha_libro;
-                        }
-                         if(j==2)
-                        {
-                            document.getElementById("libro3_titulo").innerHTML = titulo_libro;
-                            document.getElementById("libro3_autor").innerHTML = autor_libro;
-                            document.getElementById("libro3_fecha").innerHTML = fecha_libro;
-                        }
+                       document.getElementById("titulo_emocion").innerHTML = "Libros para combatir el cansancio";
+                  }
+                  else if(emocion=="estresado")
+                  {
+                      document.getElementById("titulo_emocion").innerHTML = "Libros para combatir el estres";
 
                   }
-                  if(emocion=="cansado" && emocion_libro=="cansado")
+                  */
+
+
+                  if(emocion==emocion_libro)
                   {
 
 
-                        if(j==0)
+                        if(m==0)
                         {
-
                             document.getElementById("libro1_titulo").innerHTML = titulo_libro;
                             document.getElementById("libro1_autor").innerHTML = autor_libro;
                             document.getElementById("libro1_fecha").innerHTML = fecha_libro;
+
                         }
-                         if(j==1)
+                         if(m==1)
                         {
                             document.getElementById("libro2_titulo").innerHTML = titulo_libro;
                             document.getElementById("libro2_autor").innerHTML = autor_libro;
                             document.getElementById("libro2_fecha").innerHTML = fecha_libro;
+
                         }
-                         if(j==2)
+                         if(m==2)
                         {
                             document.getElementById("libro3_titulo").innerHTML = titulo_libro;
                             document.getElementById("libro3_autor").innerHTML = autor_libro;
                             document.getElementById("libro3_fecha").innerHTML = fecha_libro;
                         }
-}
-                  if(emocion=="estresado" && emocion_libro=="estresado")
-                  {
-                        alert(hola);
-                        if(j==0)
-                        {
-                            document.getElementById("libro1_titulo").innerHTML = titulo_libro;
-                            document.getElementById("libro1_autor").innerHTML = autor_libro;
-                            document.getElementById("libro1_fecha").innerHTML = fecha_libro;
-                        }
-                         if(j==1)
-                        {
-                            document.getElementById("libro2_titulo").innerHTML = titulo_libro;
-                            document.getElementById("libro2_autor").innerHTML = autor_libro;
-                            document.getElementById("libro2_fecha").innerHTML = fecha_libro;
-                        }
-                         if(j==2)
-                        {
-                            document.getElementById("libro3_titulo").innerHTML = titulo_libro;
-                            document.getElementById("libro3_autor").innerHTML = autor_libro;
-                            document.getElementById("libro3_fecha").innerHTML = fecha_libro;
-                        }
+                        m=m+1;
+
                   }
+
+
 
                 }
           }
