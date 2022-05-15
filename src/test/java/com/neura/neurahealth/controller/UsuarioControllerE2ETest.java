@@ -27,6 +27,9 @@ public class UsuarioControllerE2ETest {
     @LocalServerPort
     private int port;
 
+    /**
+     * TEST E2E: GET MAPPING DE TODOS LOS USUARIOS
+     */
     @Test
     public void getAllUsersE2ETest(){
 
