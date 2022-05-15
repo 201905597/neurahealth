@@ -26,10 +26,6 @@ async function getAnimos(mmyyyyp,portada,diasmes){
             'Accept': 'application/json',
         }});
 
-    //FALTA
-    // - CASO EMPTY
-    // - PASARLE EL ID EN OTRO PARAMETRO!
-    // - Que la SELECT del html tenga solo los meses en los que el usuario tenga algo
     if (res.status == 200){
         //Se obtienen los datos del GET REQUEST
         const data = await res.json();
@@ -192,5 +188,3 @@ async function addAnimo(animobtn){
         alert("¡Vaya! Parece que algo ha ido mal :(");
    }
 }
-
-// GET REQUEST - EMOTIONDATES (para hacer comprobaciones)

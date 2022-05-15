@@ -44,7 +44,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public List<UsuarioDTO> getUsuariosConPsicologo() {
         String query=
                 """
-                SELECT U.ID, U.USER_NAME, U.USER_PWD, U.ID_PSIC
+                SELECT U.ID, U.USER_DATA, U.USER_NAME, U.USER_PWD, U.ID_PSIC
                 FROM USUARIOS U, PSICOLOGOS P
                 WHERE U.ID_PSIC=P.ID;
                 """;
