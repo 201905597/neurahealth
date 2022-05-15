@@ -3,7 +3,8 @@
     {
 
 
-          let emociones = ["emocion"];
+          let emociones = [];
+          let datos_emociones=[];
           event.preventDefault();
            var userId = sessionStorage.getItem('userId');
            sessionStorage.setItem("userId",userId);
@@ -20,13 +21,20 @@
                    const data = await res.json();
                    console.log(data);
                     for (let i = 0; i<data.length; i++){
-                       let datos_emociones = data[i];
+                       datos_emociones = data[i];
                        emociones[i] = datos_emociones["emotionName"];
 
                     }
                     numero= Math.floor(Math.random()*(emociones.length-1-0+1)+0); //elegimos una emocion aleatoria del usuario
-                    emocion=emociones[numero];
-
+                    if(datos_emociones.length==0)
+                    {
+                        alert("Registra alguna emocion para poder hacerle una recomendacion");
+                        location.replace("userIndex.html");
+                    }
+                    else
+                    {
+                        emocion=emociones[numero];
+                    }
 
 
 
