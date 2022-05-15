@@ -24,7 +24,7 @@ async function getPacientes(divpacientes){
         if (data.length == 0){
             content = '<p>No tienes pacientes asignados.</p>'
                        +'<p>Puedes escribir a administración para comenzar a ayudar a usuarios de NeuraHealth.</p><br>'
-                       +'<form action="mailto:someone@example.com" method="post" enctype="text/plain">'
+                       +'<form action="mailto:admin@neurahealth.com" method="post" enctype="text/plain">'
                        +'Tu nombre:<br>'
                        +'<input type="text" name="name"><br><br>'
                        +'Tu E-mail:<br>'

@@ -94,8 +94,10 @@ async function registrarsePsic(nombre,psicname,pass,centro,validp){
         // Comprobación de validez del nombre de usuario
         let uservalido = await validUsernameP(psicname);
 
-        if (centro == "Soy Freelance"){
+        if (centro == "Soy freelance"){
             centro = 0;
+        }else{
+            centro = parseInt(centro);
         }
 
         if (uservalido){
