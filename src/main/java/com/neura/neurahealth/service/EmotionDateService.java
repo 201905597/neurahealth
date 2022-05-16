@@ -19,4 +19,7 @@ public interface EmotionDateService {
 
     //Insertar emoción
     EmotionDateTable insertEmotion(EmotionDateTable emotionDateTable);
+
+    //Borrar emociones
+    void deleteEmotionsById(Long id);
 }

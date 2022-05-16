@@ -201,7 +201,7 @@ async function validUsername(usernamev){
         if (res.status == 200){
             //Se obtienen los datos de usuario de la petición
             const data = await res.json();
-            console.log(data);
+            //console.log(data);
             let userData = data["userData"];
             let userName = data["userName"];
             let userEmail = data["userEmail"];
@@ -245,13 +245,13 @@ async function validUsername(usernamev){
                     for (let n = 0; n < datat.length; n++){
                         let data2 = datat[n];
                         let id = data2["psicId"];
-                        console.log(id);
-                        console.log(psicId);
+                        //console.log(id);
+                        //console.log(psicId);
                         if (id == psicId){
                             let psicData = data2["psicData"];
                             let psicName = data2["psicName"];
                             let employerName = data2["employerName"];
-                            console.log(employerName);
+                            //console.log(employerName);
                             let postalCode = data2["postalCode"];
                             if (employerName == null){
                                 employerName = "Freelance";
@@ -329,6 +329,43 @@ async function validUsername(usernamev){
         }else{
             divpsicologos.innerHTML = content;
         }
+    }
+
+    //FUNCIÓN PARA ELIMINAR UN USUARIO Y SUS DATOS GUARDADOS DE LA BBDD
+    async function darseDeBaja(){
+
+        event.preventDefault();
+        var userId = sessionStorage.getItem("userId");
+        console.log(userId);
+
+        //ELIMINACIÓN DE LAS EMOCIONES DEL USUARIO DE LA TABLA EMOTIONDATES
+        let api = "/api/v1/emotiondates/" + userId;
+        let res = await fetch(api,{
+            method: 'DELETE',
+        });
+        console.log(res);
+
+        if (res.status == 204){
+            console.log(res);
+
+            //ELIMINACIÓN DEL USUARIO DE LA TABLA USUARIOS
+            let api2 = "/api/v1/usuarios/" + userId;
+            let res2 = await fetch(api2,{
+                method: 'DELETE',
+            });
+            console.log(res2);
+
+            if (res2.status == 204){
+                console.log(res2);
+                sessionStorage.setItem("userId",null);
+                location.replace("index.html");
+            }else{
+                alert("¡Vaya! No se ha podido resolver tu petición");
+            }
+        }else{
+            alert("¡Vaya! No se ha podido resolver tu petición");
+        }
+
     }
 
 

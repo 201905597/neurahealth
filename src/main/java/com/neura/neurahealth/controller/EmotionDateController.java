@@ -53,6 +53,12 @@ public class EmotionDateController {
         return ResponseEntity.ok().body(userEmotions);
     }
 
+    /**
+     * GET REQUEST - EMOCIÓN DE UNA FECHA ESPECÍFICA
+     * @param id ID del usuario del que queremos ver las emociones guardadas
+     * @param fecha día, mes y año
+     * @return emoción del usuario en esa fecha
+     */
     @GetMapping("/emotiondates/{id}/{fecha}")
     public ResponseEntity<Boolean> getEmotionByIdFecha(@PathVariable("id") long id, @PathVariable("fecha") Date fecha){
         /*EmotionDateDTO userEmotion = new EmotionDateDTO();
@@ -73,6 +79,11 @@ public class EmotionDateController {
         return ResponseEntity.ok().body(existe);
     }
 
+    /**
+     * POST REQUEST - inserción de estados de ánimo del usuario
+     * @param emotionDateTable
+     * @return
+     */
     @PostMapping("/emotiondates")
     public ResponseEntity<EmotionDateTable> insertarEmocion(@RequestBody EmotionDateTable emotionDateTable){
         try{
@@ -82,5 +93,11 @@ public class EmotionDateController {
             System.out.println(e);
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @DeleteMapping("/emotiondates/{id}")
+    public ResponseEntity<List<EmotionDateDTO>> deleteEmotions(@PathVariable("id") long id){
+        emotionDateService.deleteEmotionsById(id);
+        return ResponseEntity.noContent().build();
     }
 }

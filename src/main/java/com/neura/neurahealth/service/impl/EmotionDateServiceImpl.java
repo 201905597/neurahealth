@@ -98,4 +98,9 @@ public class EmotionDateServiceImpl implements EmotionDateService {
         EmotionDateTable newEmotion = emotionDateRepository.save(emotionDateTable1);
         return newEmotion;
     }
+
+    @Override
+    public void deleteEmotionsById(Long id) {
+        emotionDateRepository.deleteByUserId(id);
+    }
 }
