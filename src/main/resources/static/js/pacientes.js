@@ -165,12 +165,9 @@ async function mostrarSeguimiento(boton){
 function cerrarSesion()
 {
 
-    sessionStorage.setItem("userId",null);
-    if(sessionStorage.getItem('userId')==null)
-    {
-        alert("Cierre de sesión correcto");
-        location.replace("index.html");
-
-    }
+    sessionStorage.setItem("psicId",null);
+    //console.log(sessionStorage.getItem("userId"));
+    alert("Cierre de sesión correcto");
+    location.replace("index.html");
 
 }

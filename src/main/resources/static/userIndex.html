@@ -9,12 +9,7 @@
     <script src="js/llamadaApi.js"></script>
 </head>
 
-<body onLoad="llamadaApi();">
-
-    <script>
-        var userId = sessionStorage.getItem('userId');
-        sessionStorage.setItem("userId",userId);
-    </script>
+<body onLoad="llamadaApi('user')">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark pt-3">
     <div class="container-fluid">
@@ -34,7 +29,7 @@
                 <a class="nav-link" href="libros.html">Recomendación libros</a>
             </li>
             <li class="nav-item" style="margin-left:130px; position:right">
-                <button type="button" class="btn btn-info" onclick="cerrarSesion()" >Cerrar sesión</button>
+                <button type="button" class="btn btn-info" onclick="cerrarSesion('user')" >Cerrar sesión</button>
             </li>
 
         </ul>

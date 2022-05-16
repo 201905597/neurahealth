@@ -1,6 +1,14 @@
 
-    function llamadaApi()
+    function llamadaApi(usertype)
     {
+        if (usertype == "user"){
+            var userId = sessionStorage.getItem('userId');
+            sessionStorage.setItem("userId",userId);
+            console.log(userId);
+        }else{
+            var psicId = sessionStorage.getItem('psicId');
+            sessionStorage.setItem("psicId",psicId);
+        }
 
         fetch('https://type.fit/api/quotes')
             .then(function (response) {
@@ -29,15 +37,19 @@
         document.getElementById("autor").innerHTML = autor;
 
    	}
-   	function cerrarSesion()
+
+   	function cerrarSesion(usertype)
    	{
-   	    sessionStorage.setItem("userId",null);
-   	    if(sessionStorage.getItem('userId')==null)
-        {
+   	    if (usertype == "user"){
+   	        sessionStorage.setItem("userId",null);
             alert("Cierre de sesión correcto");
             location.replace("index.html");
+   	    }else{
+   	        sessionStorage.setItem("psicId",null);
+            alert("Cierre de sesión correcto");
+            location.replace("index.html");
+   	    }
 
-        }
 
    	}
 
