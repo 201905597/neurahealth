@@ -39,6 +39,10 @@ public class PsicologoController {
         return ResponseEntity.ok().body(psicologoEncontrado);
     }
 
+    /**
+     * GET REQUEST - LEFT JOIN DE PSICOLOGOS Y CENTROS
+     * @return los psicólogos y sus centros (o si son Freelance)
+     */
     @GetMapping("/psicologos/joincentros")
     public ResponseEntity<List<PsicologocentroDTO>> getPsicologoCentroJoin(){
         List<PsicologocentroDTO> psicologocentroDTOS = new ArrayList<>();
