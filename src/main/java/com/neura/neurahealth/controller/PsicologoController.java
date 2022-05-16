@@ -4,6 +4,7 @@ import com.neura.neurahealth.model.PsicologoTable;
 import com.neura.neurahealth.model.UsuarioTable;
 import com.neura.neurahealth.service.PsicologoService;
 import com.neura.neurahealth.service.dto.PsicologoDTO;
+import com.neura.neurahealth.service.dto.PsicologocentroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,17 @@ public class PsicologoController {
                 psicologoEncontrado = psicologo;
         }
         return ResponseEntity.ok().body(psicologoEncontrado);
+    }
+
+    @GetMapping("/psicologos/joincentros")
+    public ResponseEntity<List<PsicologocentroDTO>> getPsicologoCentroJoin(){
+        List<PsicologocentroDTO> psicologocentroDTOS = new ArrayList<>();
+        psicologocentroDTOS = psicologoService.getPsicologoCentroJoin();
+        if (psicologocentroDTOS.isEmpty()){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }else{
+            return ResponseEntity.ok().body(psicologocentroDTOS);
+        }
     }
 
     @PostMapping("/psicologos")

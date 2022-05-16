@@ -5,10 +5,12 @@ import com.neura.neurahealth.model.UsuarioTable;
 import com.neura.neurahealth.repository.PsicologoRepository;
 import com.neura.neurahealth.service.PsicologoService;
 import com.neura.neurahealth.service.dto.PsicologoDTO;
+import com.neura.neurahealth.service.dto.PsicologocentroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
@@ -65,12 +67,34 @@ public class PsicologoServiceImpl implements PsicologoService {
     }
 
     /**
-     * DELETE REQUEST: Dar de baja a un psicólogo
-     * @param id ID del psicólogo que se quiere borrar de la BBDD
+     * Obtener los datos y los centros de los psicólogos
+     * @return lista de psicólogos y centros
      */
     @Override
-    public void deletePsicologo(Long id) {
-        psicologoRepository.deleteById(id);
+    public List<PsicologocentroDTO> getPsicologoCentroJoin() {
+
+        List<PsicologocentroDTO> psicologocentroDTOS = new ArrayList<>();
+        try {
+            String query =
+                    """
+                            SELECT P.ID, P.PSIC_DATA, P.PSIC_NAME, C.EMPLOYER_NAME, C.POSTAL_CODE 
+                            FROM PSICOLOGOS P
+                            LEFT JOIN CENTROS C
+                            ON P.EMPLOYER_ID = C.EMPLOYER_ID;
+                            """;
+            psicologocentroDTOS = jdbcTemplate.query(query,
+                    (rs, rowNum) ->
+                            new PsicologocentroDTO(
+                                    rs.getLong("ID"),
+                                    rs.getString("PSIC_DATA"),
+                                    rs.getString("PSIC_NAME"),
+                                    rs.getString("EMPLOYER_NAME"),
+                                    rs.getLong("POSTAL_CODE")
+                            ));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return psicologocentroDTOS;
     }
 
     /**

@@ -8,103 +8,113 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <script src="js/cambiarDataPerfil.js"></script>
-<body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark pt-3">
-    <div class="container-fluid">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="userIndex.html">
-                    <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
-                </a>
-            </li>
-            <li class="nav-item" style="margin-left:70px">
-                <a class="nav-link" href="cambiarDataPerfil.html">Mi perfil</a>
-            </li>
-            <li class="nav-item" style="margin-left:70px">
-                <a class="nav-link" href="usercalendar.html">Mis calendarios</a>
-            </li>
-            <li class="nav-item" style="margin-left:70px">
-                <a class="nav-link" href="libros.html">Recomendación libros</a>
-            </li>
-            <li class="nav-item" style="margin-left:160px; position:right">
-                <button type="button" class="btn btn-info" onclick="cerrarSesion()" >Cerrar sesión</button>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="container-fluid bg-dark text-white">
-    <div class="row">
-        <div align="center" class="col p-3 text-white">
-            <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
+<body onload="showUserData(document.getElementById('divdatos'),document.getElementById('divpsic'))">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark pt-3">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="userIndex.html">
+                        <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-left:70px">
+                    <a class="nav-link" href="cambiarDataPerfil.html">Mi perfil</a>
+                </li>
+                <li class="nav-item" style="margin-left:70px">
+                    <a class="nav-link" href="usercalendar.html">Mis calendarios</a>
+                </li>
+                <li class="nav-item" style="margin-left:70px">
+                    <a class="nav-link" href="libros.html">Recomendación libros</a>
+                </li>
+                <li class="nav-item" style="margin-left:160px; position:right">
+                    <button type="button" class="btn btn-info" onclick="cerrarSesion()" >Cerrar sesión</button>
+                </li>
+            </ul>
         </div>
+    </nav>
 
-        <div align="center" class="col p-3 text-white">
-            <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
+    <div class="container-fluid bg-dark text-white">
+        <div class="row">
+            <div align="center" class="col p-3 text-white">
+                <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
+            </div>
+            <div class="col p-3 text-white">
+                <h1 align="center">Mi perfil</h1>
+            </div>
+            <div align="center" class="col p-3 text-white">
+                <img src="images/salud-mental.png" alt="Dispute Bills" style="width:50px;">
+            </div>
+
         </div>
-
     </div>
-</div>
-<br>
+    <br>
 
-<div>
-    <div align="center" class="row">
-        <div class="col-sm-3 p-3"></div>
-        <div class="col-sm-6 p-3">
-            <h4>Modifique su nombre de usuario, contraseña y/o psicólogo</h4><br>
-            <form>
-                <select id="seleccion">
-                    <option value="" selected>Seleccione que campo quiere modificar</option>
-                    <option>Nombre de usuario</option>
-                    <option>Contraseña</option>
-                    <option>Psicologo</option>
-                </select>
+    <!-- DIV para los datos actuales del usuario -->
+    <h1 class="display-6" style="padding-left:5%">Mis datos</h1><br>
+    <div align="center" id="divdatos"></div>
 
-                <button type="button" onclick="showInfo()" >Cambiar</button>
-            </form>
+    <!-- DIV para los datos del psicólogo del paciente -->
+    <h1 class="display-6" style="padding-left:5%">Mi psicólogo</h1><br>
+    <div align="center" id="divpsic"></div>
 
-                <br>
-                <div id="cambiarUN" style="display: none" align="center">
-                    <br><br><label for="userNameChange">Nuevo nombre de usuario:</label><b></b>
-                    <input type="text" class="form-control mt-3" id="userNameChange" name="userNameChange" placeholder="Texto por defecto"><br>
-                    <br><button class="button" onclick="updateUsuario()">Enviar</button>
-                </div>
-                <div id="cambiarPASS" style="display: none" align="center">
-                    <br><br><label for="userPasswChange">Nueva Contraseña:</label>
-                    <input type="password" class="form-control mt-3" id="userPasswChange" name="userPasswChange" placeholder="Texto por defecto"><br><br>
-                    <br><button class="button" onclick="updateUsuario()">Enviar</button>
-                </div>
-                <div id="cambiarPSICO" style="display: none" align="center">
-                    <br><br><label for="psicIdChange">Nuevo psicologo:</label>
-                    <p>Elija el ID del nuevo psicologo para el usuario: </p>
-                    <select id="psicIdChange">
-                        <option value="" selected>Seleccione id del nuevo psicologo</option>
-                        <option>20001</option>
-                        <option>20002</option>
-                        <option>20003</option>
-                        <option>20004</option>
-                        <option>20005</option>
+    <div>
+        <div align="center" class="row">
+            <div class="col-sm-3 p-3"></div>
+            <div class="col-sm-6 p-3">
+                <h4>Modifique su nombre de usuario, contraseña y/o psicólogo</h4><br>
+                <form>
+                    <select id="seleccion">
+                        <option value="" selected>Seleccione que campo quiere modificar</option>
+                        <option>Nombre de usuario</option>
+                        <option>Contraseña</option>
+                        <option>Psicologo</option>
                     </select>
-                    <br><button class="button" onclick="updateUsuario()">Enviar</button>
+
+                    <button type="button" onclick="showInfo()" >Cambiar</button>
+                </form>
+
                     <br>
-                </div>
+                    <div id="cambiarUN" style="display: none" align="center">
+                        <br><br><label for="userNameChange">Nuevo nombre de usuario:</label><b></b>
+                        <input type="text" class="form-control mt-3" id="userNameChange" name="userNameChange" placeholder="Texto por defecto"><br>
+                        <br><button class="button" onclick="updateUsuario()">Enviar</button>
+                    </div>
+                    <div id="cambiarPASS" style="display: none" align="center">
+                        <br><br><label for="userPasswChange">Nueva Contraseña:</label>
+                        <input type="password" class="form-control mt-3" id="userPasswChange" name="userPasswChange" placeholder="Texto por defecto"><br><br>
+                        <br><button class="button" onclick="updateUsuario()">Enviar</button>
+                    </div>
+                    <div id="cambiarPSICO" style="display: none" align="center">
+                        <br><br><label for="psicIdChange">Nuevo psicologo:</label>
+                        <p>Elija el ID del nuevo psicologo para el usuario: </p>
+                        <select id="psicIdChange">
+                            <option value="" selected>Seleccione id del nuevo psicologo</option>
+                            <option>20001</option>
+                            <option>20002</option>
+                            <option>20003</option>
+                            <option>20004</option>
+                            <option>20005</option>
+                        </select>
+                        <br><button class="button" onclick="updateUsuario()">Enviar</button>
+                        <br>
+                    </div>
 
-            <!--</form>-->
-            <br><br>
+                <!--</form>-->
+                <br><br>
 
+            </div>
+            <div class="col-sm-3 p-3"></div>
         </div>
-        <div class="col-sm-3 p-3"></div>
     </div>
-</div>
-<br>
-<footer class="text-center" style="background-color: #655863">
-    <section>
-        <h3 class="display-6" style="color: black">Contacta con nosotros</h3>
-    </section>
-    <section>
-        <img width="20" height="20" src="images/email.png">
-        <a style="color: black" href="mailto:admin@neurahealth.com">admin@neurahealth.com</a>
-    </section><br>
-</footer>
+    <br>
+    <footer class="text-center" style="background-color: #655863">
+        <section>
+            <h3 class="display-6" style="color: black">Contacta con nosotros</h3>
+        </section>
+        <section>
+            <img width="20" height="20" src="images/email.png">
+            <a style="color: black" href="mailto:admin@neurahealth.com">admin@neurahealth.com</a>
+        </section><br>
+    </footer>
 </body>
 </html>

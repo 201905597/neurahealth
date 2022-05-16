@@ -3,6 +3,7 @@ package com.neura.neurahealth.service;
 import com.neura.neurahealth.model.PsicologoTable;
 import com.neura.neurahealth.model.UsuarioTable;
 import com.neura.neurahealth.service.dto.PsicologoDTO;
+import com.neura.neurahealth.service.dto.PsicologocentroDTO;
 
 import java.util.List;
 
@@ -14,8 +15,8 @@ public interface PsicologoService {
     //Psicologos Freelance
     List<PsicologoDTO> getPsicologosFreelance();
 
-    //Borrar psicologos
-    void deletePsicologo(Long id);
+    //Datos de psicólogos
+    List<PsicologocentroDTO> getPsicologoCentroJoin();
 
     //Insertar psicólogo
     PsicologoTable insertPsicologo(PsicologoTable psicologoTable);
