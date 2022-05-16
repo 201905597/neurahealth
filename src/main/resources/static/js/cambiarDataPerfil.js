@@ -227,7 +227,11 @@ async function validUsername(usernamev){
             //Se muestran los datos del psicólogo del usuario - JOIN DE PSICOLOGOS Y CENTROS
             let content2 = "";
             if (psicId == 0){ //No tiene psicólogo asociado
-                content2 = "";
+                content2 = '<div align="center">'
+                            + '<button class="button" onclick="showPsics()">Conoce a los psicólogos de NeuraHealth</button>'
+                           +'</div>'
+                           +'<div id="psicologos">'
+                           +'</div>';;
             }else{ //Tiene psicólogo asociado
 
                 let api2 = "/api/v1/psicologos/joincentros";
@@ -292,6 +296,56 @@ async function validUsername(usernamev){
             alert("¡Vaya! No se ha podido resolver tu petición.");
         }
     }
+
+     async function showPsics(){
+        event.preventDefault();
+        let divpsicologos = document.getElementById('psicologos');
+        let api2 = "/api/v1/psicologos/joincentros";
+        let res2 = await fetch(api2,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        }});
+
+        if (res2.status == 200){
+            const datosPsic = await res2.json();
+            console.log(datosPsic);
+            let content = "";
+            for (let i = 0; i < datosPsic.length; i++){
+                    let psic = datosPsic[i];
+                    let id = psic["psicId"];
+                    let psicData = psic["psicData"];
+                    let psicName = psic["psicName"];
+                    let employerName = psic["employerName"];
+                    let postalCode = psic["postalCode"];
+                    if (employerName == null){
+                        employerName = "Freelance";
+                        postalCode = "(No asociado a ningún centro)";
+                    }
+                    content = content + '<div class="card">'
+                                                    + '<div class="card-body">'
+                                                        + '<div class="row">'
+                                                            + '<div class="col-sm-3"><img src="images/otherpsic.png" alt="Dispute Bills" style="width:70px;"></div>'
+                                                            + '<div class="col-sm-6">'
+                                                                + '<h4 class="card-title">' + psicData + ' (ID: ' + id + ')' + '</h4>'
+                                                                + '<p class="card-text">' + psicName + '</p>'
+                                                            +'</div>'
+                                                            +'<div class="col-sm-3">'
+                                                                + '<p class="card-title">' + employerName + '</p>'
+                                                                + '<p class="card-text">' + postalCode + '</p>'
+                                                            +'</div>'
+                                                        + '</div>'
+                                                    + '</div>'
+                                               + '</div>'
+            }
+            if (divpsicologos.innerHTML == content){
+                divpsicologos.innerHTML = ""; //"ESCONDO" si ya está mostrado
+            }else{
+                divpsicologos.innerHTML = content;
+            }
+            }
+     }
 
     async function showAllPsics(){
         event.preventDefault();
