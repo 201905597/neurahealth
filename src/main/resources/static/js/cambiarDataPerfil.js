@@ -22,6 +22,9 @@ function showInfo()
         cambiado="cambiado_PSI";
     }
 
+    console.log("DIV OBJETIVO:");
+    console.log(divObjetivo.id);
+
     if (divObjetivo.style.display === "none"){
         for (let i=0;i<divs.length-1;i++){
             divAEsconder = document.getElementById(divs[i]);
@@ -29,6 +32,11 @@ function showInfo()
         }
         divObjetivo.style.display = "block"; //Se muestra
         console.log("print del array de divs y del div de mostrar2")
+
+        //divs[3].style.display = "block"; //Se muestra el boton de enviar siempre //esto daba error pk divs[3] es un string
+        //CAMBIOS DE CLAU
+        //let divMostrarEnviar = document.getElementById(divs[3]);
+        //divMostrarEnviar.style.display = "block"; //Se muestra el boton de enviar siempre -> esto estaría bien pero ese div no existe asi que no hace nada esta linea
 
     } else {
         divObjetivo.style.display = "none"; //Se esconde si estaba mostrado
@@ -62,7 +70,6 @@ async function updateUsuario(){
             let userData = data2["userData"];
             let userNameNuevo = data2["userName"];
             let passwNuevo = data2["userPwd"];
-            let emailNuevo = data2["userEmail"];
             let psicNuevo = data2["idPsic"];
 
             //Si el fetch ha ido bien, seguimos con el update
@@ -94,37 +101,38 @@ async function updateUsuario(){
                             "userData": userData,
                             "userName" : userNameNuevo,
                             "userPwd" : passwNuevo,
-                            "userEmail" : emailNuevo,
                             "idPsic" : psicNuevo
                         };
 
-                    let uservalido = await validUsername(userNameNuevo);
 
-                     if (passwNuevo.length < 8){ //Comprobar que la nueva contraseña es de mínimo 8 caracteres
-                        alert("La contraseña introducida es demasiado corta");
-                     }else if(!uservalido && cambiado=="cambiado_NU"){ //USERNAME existe ya (si se quiere cambiar eso)
-                        alert("Ya existe un usuario con este nombre");
-                     }else{
-                         let api = "/api/v1/usuarios/" + userId.toString();
 
-                            let res = await fetch(api,{
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(dataObj)
-                         });
+                    //comprobaciones:
+                     if (passwNuevo.length < 8){
+                            alert("La contraseña introducida es demasiado corta");
+                     }
+                    //(2) Comprobar que la nueva contraseña es de mínimo 8 caracteres
+                     let uservalido = await validUsername(userNameNuevo);
 
-                         console.log(res);
-                        if (res.status == 200){
-                            alert("Cambios guardados correctamente");
-                        }
-                        else if (res.status != 200)
-                        {
-                            alert("¡Vaya! No se ha podido resolver tu petición.");
-                        }
+                     let api = "/api/v1/usuarios/" + userId.toString();
 
+                        let res = await fetch(api,{
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(dataObj)
+                    });
+
+                    console.log(res);
+                    if (res.status == 200 && uservalido==true){
+                        alert("Cambios guardados correctamente");
                     }
+                    else if (res.status != 200)
+                    {
+                        alert("¡Vaya! No se ha podido resolver tu petición.");
+                    }
+
+
         } //por si el usuario no cambia nada, se guarda como ya estaba
         else{
             alert("¡Vaya! No se ha podido resolver tu petición.")
@@ -150,7 +158,7 @@ async function validUsername(usernamev){
                 let userName = user["userName"];
                 if (userName == usernamev){
                     valid = false;
-                    //alert("Ese nombre de usuario ya existe. Por favor, escoja otro");
+                    alert("Ese nombre de usuario ya existe. Por favor, escoja otro");
                 }
             }
 
@@ -161,4 +169,17 @@ async function validUsername(usernamev){
             alert("¡Vaya! No se ha podido resolver tu petición");
             return false;
         }
-}
+
+    }
+     function cerrarSesion()
+    {
+        sessionStorage.setItem("userId",null);
+
+        if(sessionStorage.getItem('userId')==null)
+        {
+            alert("Cierre de sesión correcto");
+            location.replace("index.html");
+        }
+
+    }
+

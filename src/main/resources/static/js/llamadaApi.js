@@ -29,4 +29,15 @@
         document.getElementById("autor").innerHTML = autor;
 
    	}
+   	function cerrarSesion()
+   	{
+   	    sessionStorage.setItem("userId",null);
+   	    if(sessionStorage.getItem('userId')==null)
+        {
+            alert("Cierre de sesión correcto");
+            location.replace("index.html");
+
+        }
+
+   	}
 

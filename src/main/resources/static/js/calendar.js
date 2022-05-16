@@ -188,3 +188,15 @@ async function addAnimo(animobtn){
         alert("¡Vaya! Parece que algo ha ido mal :(");
    }
 }
+
+function cerrarSesion()
+{
+    sessionStorage.setItem("userId",null);
+    if(sessionStorage.getItem('userId')==null)
+    {
+        alert("Cierre de sesión correcto");
+        location.replace("index.html");
+
+    }
+
+}

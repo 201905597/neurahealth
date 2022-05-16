@@ -162,3 +162,15 @@ async function mostrarSeguimiento(boton){
         alert("¡Vaya! No se ha podido resolver tu petición");
     }
 }
+function cerrarSesion()
+{
+
+    sessionStorage.setItem("userId",null);
+    if(sessionStorage.getItem('userId')==null)
+    {
+        alert("Cierre de sesión correcto");
+        location.replace("index.html");
+
+    }
+
+}
