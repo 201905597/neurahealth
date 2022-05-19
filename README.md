@@ -9,3 +9,7 @@
 
 - Al usuario se le recomiendan 3 libros sobre alguna emoción que tenga guardada:
 ![img.png](img.png)
+
+
+-El usuario puede cambiar los datos de su perfil:
+![img_2.png](img_2.png)
