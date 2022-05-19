@@ -1,5 +1,7 @@
 package com.neura.neurahealth.controller;
 
+import com.neura.neurahealth.model.PsicologoTable;
+import com.neura.neurahealth.repository.PsicologoRepository;
 import com.neura.neurahealth.service.dto.PsicologocentroDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ import static org.assertj.core.api.BDDAssertions.then;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PsicologoControllerE2ETest {
+
+    @Autowired
+    private PsicologoRepository psicologoRepository;
 
     @Autowired
     private TestRestTemplate testRestTemplate;
@@ -69,5 +74,38 @@ public class PsicologoControllerE2ETest {
         //Then
         then(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         then(result.getBody()).isEqualTo(psicologocentroDTOS);
+    }
+
+    /**
+     * TEST E2E: POST REQUEST (insertar nuevo psicólogo)
+     */
+    @Test
+    public void return_http_created_when_post_ok(){
+
+        //Given
+        PsicologoTable psicologoTable = new PsicologoTable();
+        psicologoTable.setPsicData("Jane Doe");
+        psicologoTable.setPsicName("janedoe3");
+        psicologoTable.setPsicPwd("password123");
+        psicologoTable.setEmployerId(30001L);
+        PsicologoTable newPsic = psicologoRepository.save(psicologoTable);
+
+        //When
+        String url = "http://localhost:" + Integer.toString(port) + "/api/v1/psicologos";
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<PsicologoTable> entity = new HttpEntity<>(newPsic,headers);
+
+        ResponseEntity<PsicologoTable> result = testRestTemplate.exchange(
+                url,
+                HttpMethod.POST,
+                entity,
+                new ParameterizedTypeReference<PsicologoTable>() {}
+        );
+
+        //Then
+        Long id = newPsic.getId();
+        newPsic.setId(id+1);
+        then(result.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        then(result.getBody()).isEqualTo(newPsic);
     }
 }
