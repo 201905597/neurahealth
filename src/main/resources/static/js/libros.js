@@ -28,7 +28,7 @@
                     numero= Math.floor(Math.random()*(emociones.length-1-0+1)+0); //elegimos una emocion aleatoria del usuario
                     if(datos_emociones.length==0)
                     {
-                        alert("Registra alguna emocion para poder hacerle una recomendacion");
+                        alert("Registra alguna emoción para poder hacerte una recomendación");
                         location.replace("userIndex.html");
                     }
                     else

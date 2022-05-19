@@ -34,7 +34,8 @@ async function registrarse(datos,username,email,password,validu){
             validu.innerHTML = "";
 
             if (res.status == 201){
-                alert("Todo ha ido bien :)");
+                alert("Todo ha ido bien :) Ya puedes iniciar sesión");
+                location.replace("inicio.html");
             }else{
                 alert("¡Vaya! Parece que algo ha ido mal :(");
             }
@@ -121,7 +122,8 @@ async function registrarsePsic(nombre,psicname,pass,centro,validp){
             validp.innerHTML = "";
 
             if (res.status == 201){
-                alert("Todo ha ido bien :)");
+                alert("Todo ha ido bien :) Ya puedes iniciar sesión");
+                location.replace("inicio.html");
             }else{
                 alert("¡Vaya! Parece que algo ha ido mal :(");
             }
