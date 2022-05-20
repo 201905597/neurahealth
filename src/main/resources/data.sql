@@ -37,4 +37,12 @@ INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('La magia del descans
 INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El Pequeño Libro del Mindfulness','Patricia Collard',TO_DATE('2016-02-23', 'yyyy-mm-dd'),'estresado');
 INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El poder del ahora','Eckhart Tolle',TO_DATE('2013-01-01', 'yyyy-mm-dd'),'estresado');
 INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El juego interior del estrés','Timothy Gallwey',TO_DATE('2013-01-04', 'yyyy-mm-dd'),'estresado');
-
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('Ikigai: Los secretos de Japón para una vida larga y feliz','Héctor García y Francesc Miralles',TO_DATE('2016-03-07', 'yyyy-mm-dd'),'feliz');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El Algoritmo de la Felicidad','Mo Gawdat',TO_DATE('2018-08-14', 'yyyy-mm-dd'),'feliz');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('Un mundo feliz','Aldous Huxley',TO_DATE('2003-03-31', 'yyyy-mm-dd'),'feliz');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El poder de los hábitos','Charles Duhigg',TO_DATE('2012-05-07', 'yyyy-mm-dd'),'productivo');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('Hazlo ahora','Neil Fiore',TO_DATE('2011-01-13', 'yyyy-mm-dd'),'productivo');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('La Guerra del Arte','Steven Pressfield',TO_DATE('2013-06-03', 'yyyy-mm-dd'),'productivo');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('El libro que tu cerebro no quiere leer','David del Rosario',TO_DATE('2019-03-18', 'yyyy-mm-dd'),'enfadado');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('Si te pierdes, mira dentro','Adela Sanz',TO_DATE('2019-11-14', 'yyyy-mm-dd'),'enfadado');
+INSERT INTO LIBROS(TITULO,AUTOR,FECHA_PUB,EMOCION) VALUES ('Invisible (Nube de Tinta)','Eloy Moreno',TO_DATE('2018-02-01', 'yyyy-mm-dd'),'enfadado');

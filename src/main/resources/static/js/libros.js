@@ -20,12 +20,15 @@
            if (res.status == 200){
                    const data = await res.json();
                    console.log(data);
+                   console.log(data.length);
                     for (let i = 0; i<data.length; i++){
                        datos_emociones = data[i];
                        emociones[i] = datos_emociones["emotionName"];
 
                     }
+                    console.log(emociones);
                     numero= Math.floor(Math.random()*(emociones.length-1-0+1)+0); //elegimos una emocion aleatoria del usuario
+                    console.log(numero);
                     if(datos_emociones.length==0)
                     {
                         alert("Registra alguna emoción para poder hacerte una recomendación");
@@ -34,6 +37,7 @@
                     else
                     {
                         emocion=emociones[numero];
+                        console.log(emocion);
                     }
 
 

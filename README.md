@@ -21,6 +21,13 @@ Se puede iniciar sesión como usuario de NeuraHealth o como psicólogo (inicio.h
 ![img_13.png](img_13.png)
 Se ha implementado una gestión de errores en el inicio de sesión:
 ![img_14.png](img_14.png)
+Se puede iniciar sesión con el siguiente usuario:
+claublanco10001
+password1
+Se pueden elegir otros usuarios (ver data.sql).
+Para iniciar sesión como psicólogo:
+marina20001
+password4
 
 ###### Registro
 Al igual que en el inicio de sesión, los usuarios de la aplicación pueden registrarse como usuarios o como psicólogos (registro.html).
@@ -44,7 +51,7 @@ Una vez iniciada la sesión como usuario, se le lleva a la página de inicio de 
 ###### Mis Calendarios
 El usuario podrá ver sus estados de ánimo guardados del mes que elija, en formato de calendario (usercalendar.html). Si no tiene emociones registradas ese mes, aparecerá un calendario en blanco.
 ![img_3.png](img_3.png)
-Además, cada día tendrá la opción de añadir su estado de ánimo. Una vez guardado, no podrá cambiarlo. 
+Además, cada día tendrá la opción de añadir su estado de ánimo (feliz, productivo, cansado, triste, estresado, enfadado). Una vez guardado, no podrá cambiarlo. 
 ![img_4.png](img_4.png)
 
 ###### Mi Perfil
@@ -68,7 +75,7 @@ También tiene la opción de ver los psicólogos de NeuraHealth y elegir uno. Pa
 En esta sección (libros.html), al usuario se le recomiendan 3 libros sobre alguna emoción que tenga guardada:
 ![img.png](img.png)
 Si no tiene emociones guardadas aparecerá un mensaje como se muestra a continuación:
-[...]
+![img_26.png](img_26.png)
 
 ###### Cierre de sesión
 Para cerrar sesión, basta con pulsar en el botón de cerrar sesión de la barra de navegación. Saltará un mensaje avisando de que el cierre ha sido correcto y se redirigirá a la página inicial.
